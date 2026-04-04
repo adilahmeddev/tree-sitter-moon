@@ -1,0 +1,16 @@
+node_modules/
+build/
+bun.lock
+package-lock.json
+
+# Build artifacts
+*.obj
+*.lib
+*.exp
+*.dll
+*.dll.new
+*.dll.old
+*.so
+*.so.*
+*.dylib
+*.a

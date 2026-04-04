@@ -1,0 +1,31 @@
+{
+  "grammars": [
+    {
+      "name": "moon",
+      "camelcase": "Moon",
+      "scope": "source.moon",
+      "path": ".",
+      "file-types": [
+        "moon"
+      ],
+      "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm",
+      "tags": "queries/tags.scm",
+      "injection-regex": "^moon$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "links": {
+      "repository": "https://github.com/adilahmeddev/tree-sitter-moon"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": false,
+    "node": true,
+    "python": false,
+    "rust": true,
+    "swift": false
+  }
+}
