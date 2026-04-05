@@ -305,6 +305,7 @@ module.exports = grammar({
         $.method_call_expression,
         $.field_expression,
         $.tuple_index_expression,
+        $.index_expression,
         $.try_expression,
         $.range_expression,
         $.closure_expression,
@@ -430,6 +431,17 @@ module.exports = grammar({
           field("receiver", $.expression),
           ".",
           field("index", $.integer_literal),
+        ),
+      ),
+
+    index_expression: ($) =>
+      prec(
+        PREC.POSTFIX,
+        seq(
+          field("receiver", $.expression),
+          "[",
+          field("index", $.expression),
+          "]",
         ),
       ),
 

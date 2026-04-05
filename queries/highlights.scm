@@ -141,6 +141,9 @@
 ; Tuple index
 (tuple_index_expression "." @punctuation.delimiter)
 
+; Index expression (subscript)
+(index_expression "[" @punctuation.bracket "]" @punctuation.bracket)
+
 ; If/else
 (if_expression "if" @keyword.conditional)
 (if_expression "else" @keyword.conditional)
