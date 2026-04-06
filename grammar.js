@@ -669,16 +669,24 @@ module.exports = grammar({
         '"',
       ),
 
-    string_content: (_) => token.immediate(prec(1, /[^"\\{]+/)),
+    string_content: (_) => token.immediate(prec(1, /[^"\\$]+/)),
 
     string_interpolation: ($) =>
-      seq(
-        token.immediate("{"),
-        field("expression", $.expression),
-        "}",
+      choice(
+        // ${expr} form
+        seq(
+          token.immediate("${"),
+          field("expression", $.expression),
+          "}",
+        ),
+        // $name form
+        seq(
+          token.immediate("$"),
+          field("expression", alias(token.immediate(/[a-zA-Z_][a-zA-Z0-9_]*/), $.identifier)),
+        ),
       ),
 
-    escape_sequence: (_) => token.immediate(/\\[ntr"\\{}]/),
+    escape_sequence: (_) => token.immediate(/\\[ntr"\\$]/),
 
     // ──────────────────────────────────────────────
     //  Terminals

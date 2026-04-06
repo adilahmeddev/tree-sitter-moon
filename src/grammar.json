@@ -3390,31 +3390,64 @@
         "value": 1,
         "content": {
           "type": "PATTERN",
-          "value": "[^\"\\\\{]+"
+          "value": "[^\"\\\\$]+"
         }
       }
     },
     "string_interpolation": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "IMMEDIATE_TOKEN",
-          "content": {
-            "type": "STRING",
-            "value": "{"
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "${"
+              }
+            },
+            {
+              "type": "FIELD",
+              "name": "expression",
+              "content": {
+                "type": "SYMBOL",
+                "name": "expression"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": "}"
+            }
+          ]
         },
         {
-          "type": "FIELD",
-          "name": "expression",
-          "content": {
-            "type": "SYMBOL",
-            "name": "expression"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "}"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "$"
+              }
+            },
+            {
+              "type": "FIELD",
+              "name": "expression",
+              "content": {
+                "type": "ALIAS",
+                "content": {
+                  "type": "IMMEDIATE_TOKEN",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[a-zA-Z_][a-zA-Z0-9_]*"
+                  }
+                },
+                "named": true,
+                "value": "identifier"
+              }
+            }
+          ]
         }
       ]
     },
@@ -3422,7 +3455,7 @@
       "type": "IMMEDIATE_TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "\\\\[ntr\"\\\\{}]"
+        "value": "\\\\[ntr\"\\\\$]"
       }
     },
     "identifier": {

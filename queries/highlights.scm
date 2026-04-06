@@ -18,7 +18,8 @@
 (string_literal) @string
 (string_content) @string
 (string_interpolation) @string.special
-(string_interpolation "{" @punctuation.special)
+(string_interpolation "${" @punctuation.special)
+(string_interpolation "$" @punctuation.special)
 (string_interpolation "}" @punctuation.special)
 (escape_sequence) @string.escape
 
