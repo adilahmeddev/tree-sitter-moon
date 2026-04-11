@@ -409,7 +409,7 @@ module.exports = grammar({
         seq(
           field("receiver", $.expression),
           ".",
-          field("method", $.identifier),
+          field("method", choice($.identifier, alias("let", $.identifier))),
           field("arguments", $.arguments),
         ),
       ),
