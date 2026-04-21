@@ -1,0 +1,47 @@
+{
+  "name": "tree-sitter-moon",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for the Moon programming language",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp configure build",
+    "generate": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse"
+  },
+  "keywords": [
+    "tree-sitter",
+    "parser",
+    "moon",
+    "language"
+  ],
+  "tree-sitter": [
+    {
+      "scope": "source.moon",
+      "file-types": [
+        "moon"
+      ],
+      "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm",
+      "tags": "queries/tags.scm",
+      "injection-regex": "^moon$"
+    }
+  ],
+  "dependencies": {
+    "node-addon-api": "^8.0.0",
+    "node-gyp": "^12.2.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.22.4"
+  },
+  "peerDependenciesMeta": {
+    "tree-sitter": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.25.0"
+  }
+}
