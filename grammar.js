@@ -600,7 +600,7 @@ module.exports = grammar({
 
     struct_literal: ($) =>
       prec.dynamic(
-        1,
+        3,
         seq(
           field("name", $.identifier),
           "{",
